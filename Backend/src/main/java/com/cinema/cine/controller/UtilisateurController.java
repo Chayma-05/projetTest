@@ -18,15 +18,15 @@ public class UtilisateurController {
     @Autowired
     private UtilisateurService utilisateurService;
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<Utilisateur> registerUtilisateur(@RequestBody Utilisateur user) {
-        Utilisateur registeredClient = utilisateurService.registerClient(user);
-        return new ResponseEntity<>(registeredClient, HttpStatus.CREATED);
+        Utilisateur registeredUser = utilisateurService.registerUser(user);
+        return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
 
     @GetMapping("/{email}")
-    public ResponseEntity<Utilisateur> getClientByEmail(@PathVariable String email) {
-        Utilisateur user = utilisateurService.getClientByEmail(email);
+    public ResponseEntity<Utilisateur> getUserByEmail(@PathVariable String email) {
+        Utilisateur user = utilisateurService.getUserByEmail(email);
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

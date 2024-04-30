@@ -12,7 +12,7 @@ public class UtilisateurService {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
-    public Utilisateur registerClient(Utilisateur user) {
+    public Utilisateur registerUser(Utilisateur user) {
         Utilisateur existingClient = utilisateurRepository.findByEmail(user.getEmail());
         if (existingClient != null) {
             throw new RuntimeException("Client with this email already exists.");
@@ -20,7 +20,7 @@ public class UtilisateurService {
         return utilisateurRepository.save(user);
     }
 
-    public Utilisateur getClientByEmail(String email) {
+    public Utilisateur getUserByEmail(String email) {
         return utilisateurRepository.findByEmail(email);
     }
     public List<Utilisateur> getAllUsers() {
