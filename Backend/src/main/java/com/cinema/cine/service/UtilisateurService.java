@@ -20,6 +20,17 @@ public class UtilisateurService {
         return utilisateurRepository.save(user);
     }
 
+    public Utilisateur loginUser(String email, String password) {
+        Utilisateur user = utilisateurRepository.findByEmail(email);
+        if (user == null) {
+            throw new RuntimeException("L'email fourni n'est associé à aucun compte.");
+        }
+        if (!user.getPassword().equals(password)) {
+            throw new RuntimeException("Le mot de passe fourni est incorrect.");
+        }
+        return user;
+    }
+
     public Utilisateur getUserByEmail(String email) {
         return utilisateurRepository.findByEmail(email);
     }

@@ -24,6 +24,16 @@ public class UtilisateurController {
         return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Utilisateur> loginUtilisateur(@RequestBody Utilisateur user) {
+        Utilisateur loggedInUser = utilisateurService.loginUser(user.getEmail(), user.getPassword());
+        if (loggedInUser == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        return new ResponseEntity<>(loggedInUser, HttpStatus.OK);
+    }
+
+
     @GetMapping("/{email}")
     public ResponseEntity<Utilisateur> getUserByEmail(@PathVariable String email) {
         Utilisateur user = utilisateurService.getUserByEmail(email);
