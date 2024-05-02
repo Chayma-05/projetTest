@@ -5,16 +5,16 @@
 }
 
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+  font-family: Verdana, Tahoma, sans-serif, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url("/src/components/Assets/pexels-donaldtong94-109669.jpg")
-    no-repeat;
+  background: url('../Assets/bg.jpg') no-repeat;
   background-size: cover;
   background-position: center;
 }
+
 
 .wrapper {
   position: relative;
@@ -32,7 +32,7 @@ body {
 form h1 {
   font-size: 36px;
   text-align: center;
-  color: #3d0c02;
+  color: #deb49f;
 }
 
 form .input-box {
@@ -45,7 +45,7 @@ form .input-box {
 .input-box input {
   width: 100%;
   height: 100%;
-  background: wheat;
+  background: #c8a594;
   opacity: 0.75;
   border: none;
   outline: none;
@@ -58,7 +58,7 @@ form .input-box {
 form button {
   width: 100%;
   height: 40px;
-  background: wheat;
+  background: #deb49f;
   border: none;
   outline: none;
   border-radius: 40px;
@@ -72,7 +72,7 @@ form .login-link {
   font-size: 14.5px;
   text-align: center;
   margin: 20px 0 15px;
-  color: wheat;
+  color: #deb49f;
 }
 .login-link p a {
   color: #fff;
@@ -81,12 +81,13 @@ form .login-link {
 }
 .login-link p a:hover {
   text-decoration: underline;
+  color: #ea977e;
 }
 form .register-link {
   font-size: 14.5px;
   text-align: center;
   margin: 20px 0 15px;
-  color: wheat;
+  color: #deb49f;
 }
 .register-link p a {
   color: #fff;
@@ -95,4 +96,24 @@ form .register-link {
 }
 .register-link p a:hover {
   text-decoration: underline;
+  color: #ea977e;
 }
+
+
+.admin-login {  
+  form h1 {
+    color: #300800;
+  }
+  .input-box input {
+    background: white;
+    opacity: 0.75;
+    border: none;
+    outline: none;
+    border: 2px solid #ea977e;
+  }
+
+  form button{
+    background: #ea977e;
+  }
+}
+
