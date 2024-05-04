@@ -1,6 +1,7 @@
 import React, { useEffect, useState }  from 'react';
 import DataGridComponent from '../components/DataGridComponent';
 import filmService from '../service/filmService';
+import { useNavigate  } from 'react-router-dom';
 
 const FilmContainer = () => {
   const [films, setFilms] = useState([]);
@@ -19,11 +20,17 @@ const FilmContainer = () => {
     { field: 'duree', headerName: 'Durée', width: 110 },
     { field: 'dateSortie', headerName: 'Date de sortie', width: 160 },
   ];
+  const navigate = useNavigate();
 
   const handleEditClick = (row) => {
-    // Handle edit action
+    navigate(`/admin/films/edit/${row.id}`);
   };
 
+ 
+  const addfilm = (e) => {
+    e.preventDefault();
+    navigate('/admin/films/add');
+  }
   const handleDeleteClick = (row) => {
     const film=films.find(film=>film.id===row.id)
     filmService.deleteFilm(film.id).then(()=>{
@@ -32,10 +39,12 @@ const FilmContainer = () => {
   };
 
   const handleDisplayClick = (row) => {
-    // Handle display action
+    navigate(`/admin/films/edit/${row.id}?display=true`);
   };
 
   return (
+    <div>
+      <button onClick={addfilm}>add film</button>
     <DataGridComponent
       columns={columns}
       rows={films}
@@ -44,6 +53,7 @@ const FilmContainer = () => {
       onDeleteClick={handleDeleteClick}
       onDisplayClick={handleDisplayClick}
     />
+    </div>
   );
 };
 

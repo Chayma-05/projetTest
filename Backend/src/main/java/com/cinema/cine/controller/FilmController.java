@@ -25,9 +25,11 @@ public class FilmController {
 
 
     @GetMapping("/getFilm")
-    public List<Film> getAllFilms() {
-        return filmService.getAllFilms();
+    public ResponseEntity<List<Film>> getAllFilms() {
+        List<Film> films = filmService.getAllFilms();
+        return new ResponseEntity<>(films, HttpStatus.OK);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Film> getFilmById(@PathVariable Integer id) {
