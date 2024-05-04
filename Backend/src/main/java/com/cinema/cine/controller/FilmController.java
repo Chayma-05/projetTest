@@ -1,6 +1,8 @@
 package com.cinema.cine.controller;
 
+import com.cinema.cine.entity.Categorie;
 import com.cinema.cine.entity.Film;
+import com.cinema.cine.service.CategorieService;
 import com.cinema.cine.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +19,21 @@ public class FilmController {
     @Autowired
     private FilmService filmService;
 
+
+    @Autowired
+    private CategorieService categorieService;
+
+
     @PostMapping("/add")
     public ResponseEntity<Film> addFilm(@RequestBody Film film) {
+        //Film addedFilm = filmService.addFilm(film);
+       // return new ResponseEntity<>(addedFilm, HttpStatus.CREATED);
+
+        Categorie categorie = categorieService.getCategorieById(film.getIdCategorie().getId());
+        if (categorie == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        film.setIdCategorie(categorie); // Set the category for the film
         Film addedFilm = filmService.addFilm(film);
         return new ResponseEntity<>(addedFilm, HttpStatus.CREATED);
     }
@@ -26,8 +41,15 @@ public class FilmController {
 
     @GetMapping("/getFilm")
     public ResponseEntity<List<Film>> getAllFilms() {
-        List<Film> films = filmService.getAllFilms();
-        return new ResponseEntity<>(films, HttpStatus.OK);
+       // List<Film> films = filmService.getAllFilms();
+        //return new ResponseEntity<>(films, HttpStatus.OK);
+
+        List<Film> filmsWithCategories = filmService.getAllFilms();
+        if (filmsWithCategories.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(filmsWithCategories, HttpStatus.OK);
+
     }
 
 

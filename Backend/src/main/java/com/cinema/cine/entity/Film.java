@@ -1,5 +1,6 @@
 package com.cinema.cine.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,11 @@ public class Film {
     @Column(name = "id_film", nullable = false)
     private Integer id;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_categorie", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Categorie idCategorie;
+
     @Column(name = "titre", nullable = false, length = 100)
     private String titre;
 
@@ -27,5 +33,8 @@ public class Film {
 
     @Column(name = "date_sortie", nullable = false)
     private LocalDate dateSortie;
+
+    @Column(name = "poster", nullable = false, length = 1000)
+    private String poster;
 
 }
