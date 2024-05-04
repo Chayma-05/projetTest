@@ -1,0 +1,16 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.sidebar ul {
+  padding: 0px !important;
+}
+
+.sidebar ul li:hover {
+  background-color: rgb(216, 25, 25);
+}
+
+/* Modifier la couleur du texte en blanc lorsqu'un élément est survolé */
+.sidebar ul li a:hover .fs-5 {
+  color: white !important;
+}
