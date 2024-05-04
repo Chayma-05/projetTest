@@ -34,7 +34,4 @@ public class Film {
     @Column(name = "date_sortie", nullable = false)
     private LocalDate dateSortie;
 
-    @Column(name = "poster", nullable = false, length = 1000)
-    private String poster;
-
 }
