@@ -17,11 +17,6 @@ public class CategorieController {
     @Autowired
     private CategorieService categorieService;
 
-    @PostMapping("/add")
-    public ResponseEntity<Categorie> addCategorie(@RequestBody Categorie categorie) {
-        Categorie addedCategorie = categorieService.addCategorie(categorie);
-        return new ResponseEntity<>(addedCategorie, HttpStatus.CREATED);
-    }
 
     @GetMapping("/getAll")
     public List<Categorie> getAllCategories() {

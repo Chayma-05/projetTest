@@ -2,6 +2,7 @@ import React, { useEffect, useState }  from 'react';
 import DataGridComponent from '../components/DataGridComponent';
 import filmService from '../service/filmService';
 import { useNavigate  } from 'react-router-dom';
+import '../styles/addFilm.css';
 
 const FilmContainer = () => {
   const [films, setFilms] = useState([]);
@@ -12,11 +13,15 @@ const FilmContainer = () => {
 
   const loadFilms = async () => {
     const allFilms = await filmService.getAllFilms();
-    setFilms(allFilms);
+    setFilms(allFilms.map((film) => ({
+      ...film,
+      genre: film.idCategorie?.genre, // Optional chaining to handle potential null values
+    })));
   };
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     { field: 'titre', headerName: 'Titre', width: 150 },
+    { field: 'genre', headerName: 'Genre', width: 120 },
     { field: 'duree', headerName: 'Durée', width: 110 },
     { field: 'dateSortie', headerName: 'Date de sortie', width: 160 },
   ];
@@ -43,8 +48,8 @@ const FilmContainer = () => {
   };
 
   return (
-    <div>
-      <button onClick={addfilm}>add film</button>
+    <div className='data-grid'>
+      <button onClick={addfilm} className='add-mov'>add film</button>
     <DataGridComponent
       columns={columns}
       rows={films}
