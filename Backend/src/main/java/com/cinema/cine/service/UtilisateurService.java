@@ -37,4 +37,9 @@ public class UtilisateurService {
     public List<Utilisateur> getAllUsers() {
         return utilisateurRepository.findAll();
     }
+
+    public Utilisateur getUserById(Integer id) {
+        return utilisateurRepository.findById(id).orElse(null);
+    }
+
 }
