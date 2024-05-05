@@ -28,6 +28,7 @@ const LoginContainer = () => {
     //if (/* form is valid */) {
       try {
         await login(user);
+        navigate('/')
         // Handle successful registration here
       } catch (error) {
         console.error(error.response.data);
@@ -38,6 +39,7 @@ const LoginContainer = () => {
 
   return (
     <div className='user-auth' style={{ backgroundColor: 'rgba(104, 27, 27, 0.6)' , borderRadius: '20px'}}>
+    
     <Form onSubmit={handleSubmit}>
       <h1>Login</h1>
       <InputBox
