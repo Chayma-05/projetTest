@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-const DataGridComponent = ({ columns, rows, pageSizeOptions, onEditClick, onDeleteClick, onDisplayClick }) => {
+const DataGridComponent = ({ columns, rows, pageSizeOptions, onEditClick, onDeleteClick, onDisplayClick ,showDisplayIcon }) => {
   const updatedColumns = [
     ...columns,
     {
@@ -16,9 +16,11 @@ const DataGridComponent = ({ columns, rows, pageSizeOptions, onEditClick, onDele
       width: 150,
       renderCell: (params) => (
         <div>
-          <IconButton onClick={() => onDisplayClick(params.row)} style={{ color: '#FFA500' }}>
-            <VisibilityIcon />
-          </IconButton>
+          {showDisplayIcon && (
+            <IconButton onClick={() => onDisplayClick(params.row)} style={{ color: '#FFA500' }}>
+              <VisibilityIcon />
+            </IconButton>
+          )}
           <IconButton onClick={() => onEditClick(params.row)} style={{ color: '#00FF00' }}>
             <EditIcon />
           </IconButton>
@@ -31,7 +33,7 @@ const DataGridComponent = ({ columns, rows, pageSizeOptions, onEditClick, onDele
   ];
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'flex-end', height: 400, width: '55%', margin: 'auto' }}>
+    <Box sx={{ display: 'flex', justifyContent: 'flex-end', height: 400, width: '65%', margin: 'auto' }}>
       <DataGrid
         rows={rows}
         columns={updatedColumns}

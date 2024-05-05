@@ -38,7 +38,7 @@ const RegisterContainer = () => {
   };
 
   return (
-    <div className='user-auth' style={{ backgroundColor: 'rgba(104, 27, 27, 0.6)' , borderRadius: '20px', padding: '30px'}}>
+    <div className='user-auth register' style={{ backgroundColor: 'rgba(104, 27, 27, 0.6)' , borderRadius: '20px', padding: '30px'}}>
     <Form onSubmit={handleSubmit}>
       <h1>Register</h1>
       <InputBox

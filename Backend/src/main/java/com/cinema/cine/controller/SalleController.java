@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/salle")
+@CrossOrigin
 public class SalleController {
     @Autowired
     private SalleService salleService;

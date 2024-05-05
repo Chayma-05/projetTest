@@ -101,11 +101,25 @@ const AddFilmContainer = () => {
 
   const FormButtons = () => {
     if (isDisplayMode) {
-      return <button type="button" onClick={() => navigate(-1)}>Go Back</button>;
+      return (
+        <>
+          <button type="button" onClick={() => navigate(-1)}>Go Back</button>
+        </>
+      );
     } else if (isEditMode) {
-      return <button type="submit">Update Film</button>;
+      return (
+        <>
+          <button type="button" onClick={() => navigate(-1)}>Go Back</button>
+          <button type="submit">Update Film</button>
+        </>
+      );
     } else {
-      return <button type="submit">Add Film</button>;
+      return (
+        <>
+          <button type="button" onClick={() => navigate(-1)}>Go Back</button>
+          <button type="submit">Add Film</button>
+        </>
+      );
     }
   };
   

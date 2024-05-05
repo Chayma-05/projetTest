@@ -3,6 +3,8 @@ import DataGridComponent from '../components/DataGridComponent';
 import filmService from '../service/filmService';
 import { useNavigate  } from 'react-router-dom';
 import '../styles/addFilm.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Sidebar from '../components/Sidebar';
 
 const FilmContainer = () => {
   const [films, setFilms] = useState([]);
@@ -15,7 +17,7 @@ const FilmContainer = () => {
     const allFilms = await filmService.getAllFilms();
     setFilms(allFilms.map((film) => ({
       ...film,
-      genre: film.idCategorie?.genre, // Optional chaining to handle potential null values
+      genre: film.idCategorie?.genre,
     })));
   };
   const columns = [
@@ -48,16 +50,22 @@ const FilmContainer = () => {
   };
 
   return (
-    <div className='data-grid'>
+    <div className="d-flex">
+    <Sidebar />
+    <div className="flex-grow-1">
+      <div className="d-flex justify-content-end mb-3 data-grid">
       <button onClick={addfilm} className='add-mov'>add film</button>
+      </div>
     <DataGridComponent
       columns={columns}
       rows={films}
       pageSizeOptions={[5]}
       onEditClick={handleEditClick}
       onDeleteClick={handleDeleteClick}
+      showDisplayIcon={true}
       onDisplayClick={handleDisplayClick}
     />
+    </div>
     </div>
   );
 };
