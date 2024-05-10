@@ -76,4 +76,9 @@ public class FilmController {
         filmService.deleteFilm(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/count")
+    public ResponseEntity<Long> getFilmCount() {
+        long count = filmService.getFilmCount();
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }
 }

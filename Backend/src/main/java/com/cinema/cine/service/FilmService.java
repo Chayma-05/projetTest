@@ -37,4 +37,7 @@ public class FilmService {
     public void deleteFilm(Integer id) {
         filmRepository.deleteById(id);
     }
+    public long getFilmCount() {
+        return filmRepository.count();
+    }
 }

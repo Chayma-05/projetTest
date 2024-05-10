@@ -53,6 +53,9 @@ const FilmContainer = () => {
     <div className="d-flex">
     <Sidebar />
     <div className="flex-grow-1">
+    <div style={{ position: 'relative', top: '20px', left: '20%' }}>
+        <h1><b>Movies</b></h1>
+      </div>
       <div className="d-flex justify-content-end mb-3 data-grid">
       <button onClick={addfilm} className='add-mov'>add film</button>
       </div>
@@ -62,6 +65,7 @@ const FilmContainer = () => {
       pageSizeOptions={[5]}
       onEditClick={handleEditClick}
       onDeleteClick={handleDeleteClick}
+      showActionColumn={true}
       showDisplayIcon={true}
       onDisplayClick={handleDisplayClick}
     />

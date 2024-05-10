@@ -18,7 +18,7 @@ function Sidebar() {
         <ul className="nav nav-pills flex-column p-0 m-0">
           <li className="nav-item p-1">
           <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/admin")}
               className="nav-link text-white"
               style={{ border: "none", background: "none" }}
             >
@@ -33,32 +33,32 @@ function Sidebar() {
               style={{ border: "none", background: "none" }}
             >
               <i className="bi bi-film me-2 fs-5"></i>
-              <span className="fs-5">Movie</span>
+              <span className="fs-5">Movies</span>
             </button>
           </li>
           <li className="nav-item p-1">
           <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/admin/users")}
               className="nav-link text-white"
               style={{ border: "none", background: "none" }}
             >
               <i className="bi bi-people me-2 fs-5"></i>
-              <span className="fs-5">User</span>
+              <span className="fs-5">Users</span>
             </button>
           </li>
           <li className="nav-item p-1">
           <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/admin/reservations")}
               className="nav-link text-white"
               style={{ border: "none", background: "none" }}
             >
               <i className="bi bi-bag-check-fill me-2 fs-5"></i>
-              <span className="fs-5">Reservation</span>
+              <span className="fs-5">Reservations</span>
             </button>
           </li>
           <li className="nav-item p-1">
           <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/admin/salles")}
               className="nav-link text-white"
               style={{ border: "none", background: "none" }}
             >

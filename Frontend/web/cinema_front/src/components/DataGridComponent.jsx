@@ -6,8 +6,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-const DataGridComponent = ({ columns, rows, pageSizeOptions, onEditClick, onDeleteClick, onDisplayClick ,showDisplayIcon }) => {
-  const updatedColumns = [
+const DataGridComponent = ({ columns, rows, pageSizeOptions, onEditClick, onDeleteClick, onDisplayClick ,showDisplayIcon, showActionColumn  }) => {
+  const updatedColumns = showActionColumn
+  ? [
     ...columns,
     {
       field: 'actions',
@@ -30,7 +31,7 @@ const DataGridComponent = ({ columns, rows, pageSizeOptions, onEditClick, onDele
         </div>
       ),
     },
-  ];
+  ]:columns;
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'flex-end', height: 400, width: '65%', margin: 'auto' }}>

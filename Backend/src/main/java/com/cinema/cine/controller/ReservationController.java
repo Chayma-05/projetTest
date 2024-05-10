@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/reservation")
+@CrossOrigin
 public class ReservationController {
     @Autowired
     private ReservationService reservationService;
@@ -73,5 +74,10 @@ public class ReservationController {
     public ResponseEntity<Void> deleteReservation(@PathVariable Integer id) {
         reservationService.deleteReservation(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @GetMapping("/count")
+    public ResponseEntity<Long> getReservationsCount() {
+        long count = reservationService.getReservationCount();
+        return new ResponseEntity<>(count, HttpStatus.OK);
     }
 }

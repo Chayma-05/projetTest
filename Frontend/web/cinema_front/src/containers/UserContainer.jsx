@@ -1,29 +1,34 @@
 import React, { useEffect, useState }  from 'react';
 import DataGridComponent from '../components/DataGridComponent';
-import salleService from '../service/salleService';
+import userService from '../service/UserService';
 import '../styles/addFilm.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Sidebar from '../components/Sidebar';
 
-const SalleContainer = () => {
-  const [salles, setSalles] = useState([]);
+const UserContainer = () => {
+  const [users, setUsers] = useState([]);
   useEffect(() => {
-    loadSalles();
+    loadUsers();
   }, []);
 
-  const loadSalles = async () => {
+  const loadUsers = async () => {
     try {
-        const allSalles = await salleService.getAllSalles();
-        setSalles(allSalles);
+        const allUsers = await userService.getAllUsers();
+        setUsers(allUsers);
       } catch (error) {
-        console.error("Error fetching salles:", error);
+        console.error("Error fetching users:", error);
         // Handle the error gracefully, e.g., display an error message to the user
       }
   };
   const columns = [
     { field: 'id', headerName: 'ID', width: 120 },
-    { field: 'capacite', headerName: 'Capacity', width: 150 },
+    { field: 'nom', headerName: 'Last name', width: 120},
+    { field: 'prenom', headerName: 'First name', width: 120 },
+    { field: 'email', headerName: 'Email', width: 200 },
   ];
+
+
+
 
 
 
@@ -32,15 +37,15 @@ const SalleContainer = () => {
     <div className="d-flex">
     <Sidebar />
     <div className="flex-grow-1">
-    <div style={{ position: 'relative', top: '20px', left: '20%' }}>
-        <h1><b>Theaters</b></h1>
+      <div style={{ position: 'relative', top: '20px', left: '20%' }}>
+        <h1><b>Users</b></h1>
       </div>
-    <div className="d-flex justify-content-end mb-5 data-grid">
+      <div className="d-flex justify-content-end mb-5 data-grid">
      
       </div>
     <DataGridComponent
       columns={columns}
-      rows={salles}
+      rows={users}
       pageSizeOptions={[5]}
       showActionColumn={false}
     />
@@ -49,4 +54,4 @@ const SalleContainer = () => {
   );
 };
 
-export default SalleContainer;
+export default UserContainer;
