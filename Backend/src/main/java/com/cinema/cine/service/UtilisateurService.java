@@ -41,5 +41,8 @@ public class UtilisateurService {
     public Utilisateur getUserById(Integer id) {
         return utilisateurRepository.findById(id).orElse(null);
     }
+    public long getUsersCount() {
+        return utilisateurRepository.count();
+    }
 
 }

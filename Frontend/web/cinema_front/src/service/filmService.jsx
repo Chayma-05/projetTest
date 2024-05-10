@@ -26,6 +26,10 @@ const filmService = {
   deleteFilm: async (id) => {
     await axios.delete(`${API_URL}/delete/${id}`);
   },
+  getCount: async () => {
+    const response = await axios.get(`${API_URL}/count`);
+    return response.data;
+  },
 };
 
 export default filmService;

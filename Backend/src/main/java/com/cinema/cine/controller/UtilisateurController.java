@@ -46,5 +46,18 @@ public class UtilisateurController {
     public List<Utilisateur> getUsers() {
         return utilisateurService.getAllUsers();
     }
+    @GetMapping("/byid/{id}")
+    public ResponseEntity<Utilisateur> getUserById(@PathVariable Integer id) {
+        Utilisateur user = utilisateurService.getUserById(id);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+    @GetMapping("/count")
+    public ResponseEntity<Long> getUsersCount() {
+        long count = utilisateurService.getUsersCount();
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }
 }
 

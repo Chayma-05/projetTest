@@ -38,4 +38,7 @@ public class ReservationService {
     public void deleteReservation(Integer id) {
         reservationRepository.deleteById(id);
     }
+    public long getReservationCount() {
+        return reservationRepository.count();
+    }
 }
