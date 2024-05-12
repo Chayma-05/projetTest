@@ -1,5 +1,6 @@
 package com.cinema.cine.service;
 
+import com.cinema.cine.entity.Film;
 import com.cinema.cine.repository.UtilisateurRepository;
 import com.cinema.cine.entity.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,15 @@ public class UtilisateurService {
     }
     public long getUsersCount() {
         return utilisateurRepository.count();
+    }
+
+    public Utilisateur updateUser(Integer id, Utilisateur updateUser) {
+        Utilisateur existingUser = utilisateurRepository.findById(id).orElse(null);
+        if (existingUser != null) {
+            updateUser.setId(id);
+            return utilisateurRepository.save(updateUser);
+        }
+        return null;
     }
 
 }

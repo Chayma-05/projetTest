@@ -16,6 +16,16 @@ const userService = {
     const response = await axios.get(`${API_URL}/count`);
     return response.data;
   },
+
+  updateUser: async (userData) => {
+    try {
+      const response = await axios.put(`${API_URL}/update/${userData.id}`, userData);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+
 };
 
 export default userService;

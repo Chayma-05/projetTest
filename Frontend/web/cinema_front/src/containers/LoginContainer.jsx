@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import Form from '../components/Form';
 import InputBox from '../components/InputBox';
 import Link from '../components/Link';
-import '../styles/authentif.css';
+import '../styles/userauthetif.css';
 import {login} from '../service/AuthService';
 import { useNavigate  } from 'react-router-dom';
 
@@ -14,6 +14,17 @@ const LoginContainer = () => {
   });
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const registeredUser = JSON.parse(sessionStorage.getItem('registeredUser'));
+    if (registeredUser && registeredUser.email) {
+      setUser({
+        ...user,
+        email: registeredUser.email,
+      });
+    }
+  }, []);
+
   const handleRegisterLinkClick = (e) => {
     e.preventDefault();
     navigate('/register');
@@ -25,18 +36,21 @@ const LoginContainer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //if (/* form is valid */) {
-      try {
-        await login(user);
-        navigate('/')
-        // Handle successful registration here
-      } catch (error) {
-        console.error(error.response.data);
-        // Handle error here
-      }
-  //  }
-  };
+    try {
+      const loggedInUser = await login(user);
+      sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+      navigate('/profile');
 
+    } catch (error) {
+      
+        setUser({
+          ...user,
+          password: '', 
+          error: "Incorrect email or password. Please try again.",
+        });
+      
+    }
+  };
   return (
     <div className='user-auth' style={{ backgroundColor: 'rgba(104, 27, 27, 0.6)' , borderRadius: '20px'}}>
     
@@ -59,6 +73,7 @@ const LoginContainer = () => {
         required
       />
       <button type="submit">Login</button>
+      {user.error && <p className="error-message">{user.error}</p>}
       <div className="register-link">
         <p>
           Don't have an account?{' '}
