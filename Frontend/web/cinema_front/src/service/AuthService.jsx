@@ -6,24 +6,24 @@ const handleApiCall = async (endpoint, user) => {
   try {
     const response = await axios.post(`${apiUrl}/${endpoint}`, user);
     console.log(response.data);
-    // Handle successful API call here
+    return response.data; 
   } catch (error) {
     console.error(error.response.data);
-    // Handle error here
+    throw new Error(error.response.data); 
   }
 };
 
-const register = (user) => {
-  handleApiCall('utilisateur/register', user);
+const register = async (user) => {
+  return handleApiCall('utilisateur/register', user); 
 };
 
-const login = (user) => {
-  handleApiCall('utilisateur/login', user);
+
+const login = async (user) => {
+  return await handleApiCall('utilisateur/login', user); 
 };
 
-const adminLogin = (admin) => {
-  handleApiCall('admin/login', admin);
+const adminLogin = async (admin) => {
+  return await handleApiCall('admin/login', admin); 
 };
 
-export { register, login ,adminLogin};
-
+export { register, login, adminLogin };

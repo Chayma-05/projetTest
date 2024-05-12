@@ -10,6 +10,7 @@ import BilletContainer from './containers/BilletContainer';
 import ReservationContainer from './containers/ReservationContainer';
 import UserContainer from './containers/UserContainer';
 import AdminDashboard from './containers/AdminDashboard';
+import Profile from './containers/profile';
 
 
 function App() {
@@ -27,7 +28,9 @@ function App() {
         <Route path="/admin/billets" element={<BilletContainer />} />
         <Route path="/admin/reservations" element={<ReservationContainer />} />
         <Route path="/admin/films/add" element={<AddFilmContainer />} />
-        <Route path="/admin/films/edit/:id" element={<AddFilmContainer/>} /></Routes>
+        <Route path="/admin/films/edit/:id" element={<AddFilmContainer/>} />
+        <Route path="/profile" element={<Profile />} />
+        </Routes>
     </Router>
    
   );

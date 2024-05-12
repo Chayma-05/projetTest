@@ -7,6 +7,12 @@ export default Sidebar;
 function Sidebar() {
   const navigate = useNavigate();
 
+
+  const handleLogout = () => {
+    sessionStorage.clear();
+    window.location.href = '/adminlogin';
+  };
+
   return (
     <div className="sidebar d-flex flex-column justify-content-between bg-custom-color text-white p-4 vh-100">
       <div>
@@ -70,8 +76,8 @@ function Sidebar() {
       </div>
       <div>
         <hr className="text-secondary " />
-        <i className="bi bi-person fs-5"></i>
-        <span className="fs-4">Admin</span>
+             <br></br>
+             <button className="logout-button " onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );

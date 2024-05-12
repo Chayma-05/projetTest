@@ -17,3 +17,16 @@
 .bg-custom-color {
   background-color: #2e80d8; /* Couleur bleu foncé */
 }
+
+.logout-button {
+  background-color: #2e80d8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #2e80d8;
+}

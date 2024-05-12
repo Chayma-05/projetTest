@@ -1,5 +1,6 @@
 package com.cinema.cine.controller;
 
+import com.cinema.cine.entity.Film;
 import com.cinema.cine.entity.Utilisateur;
 import com.cinema.cine.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,15 @@ public class UtilisateurController {
     public ResponseEntity<Long> getUsersCount() {
         long count = utilisateurService.getUsersCount();
         return new ResponseEntity<>(count, HttpStatus.OK);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Utilisateur> updateUser(@PathVariable Integer id, @RequestBody Utilisateur updateUser) {
+        Utilisateur utilisateur = utilisateurService.updateUser(id, updateUser);
+        if (utilisateur == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(utilisateur, HttpStatus.OK);
     }
 }
 
