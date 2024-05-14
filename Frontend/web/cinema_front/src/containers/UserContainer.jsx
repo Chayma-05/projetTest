@@ -17,7 +17,6 @@ const UserContainer = () => {
         setUsers(allUsers);
       } catch (error) {
         console.error("Error fetching users:", error);
-        // Handle the error gracefully, e.g., display an error message to the user
       }
   };
   const columns = [

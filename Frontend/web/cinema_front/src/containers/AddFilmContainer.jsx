@@ -66,10 +66,10 @@ const AddFilmContainer = () => {
     try {
       const formattedData = {
         ...filmData,
-        idCategorie: { id: filmData.idCategorie } // Ensure idCategorie is an object with an id property
+        idCategorie: { id: filmData.idCategorie } 
       };
       if (!filmData.idCategorie) {
-        console.error('Category is required.'); // Handle validation appropriately
+        console.error('Category is required.'); 
         return;
       }
       if (id) {

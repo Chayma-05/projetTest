@@ -3,10 +3,14 @@ import Form from '../components/Form';
 import InputBox from '../components/InputBox';
 import '../styles/profileStyle.css';
 import userService from '../service/UserService'; 
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [formData, setFormData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loggedInUser = sessionStorage.getItem('loggedInUser');
@@ -94,6 +98,7 @@ const Profile = () => {
     )}
     
     <button type="submit">Update</button>
+    <button  type="button" onClick={() => navigate(-1)}>go back</button>
   </Form>
 </div>
 

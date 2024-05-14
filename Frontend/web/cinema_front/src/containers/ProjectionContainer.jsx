@@ -17,7 +17,6 @@ const ProjectionContainer = () => {
         setPrjs(allPrjs);
       } catch (error) {
         console.error("Error fetching projections:", error);
-        // Handle the error gracefully, e.g., display an error message to the user
       }
   };
   const columns = [
