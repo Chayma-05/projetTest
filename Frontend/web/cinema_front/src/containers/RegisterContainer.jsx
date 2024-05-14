@@ -30,9 +30,7 @@ const RegisterContainer = () => {
     e.preventDefault();
     try {
       await register(user);
-      // Handle successful registration here
       sessionStorage.setItem('registeredUser', JSON.stringify(user));
-      // Navigate to the login page
       navigate('/login');
     } catch (error) {
       

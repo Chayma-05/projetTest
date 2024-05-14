@@ -39,7 +39,7 @@ const LoginContainer = () => {
     try {
       const loggedInUser = await login(user);
       sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
-      navigate('/profile');
+      navigate('/client/Movies');
 
     } catch (error) {
       
