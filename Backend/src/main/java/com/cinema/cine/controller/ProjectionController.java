@@ -80,4 +80,12 @@ public class ProjectionController {
         projectionService.deleteProjection(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/film/{idFilm}")
+    public ResponseEntity<List<Projection>> getProjectionsByFilmId(@PathVariable Integer idFilm) {
+        List<Projection> projections = projectionService.getProjectionsByFilmId(idFilm);
+        if (projections.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(projections, HttpStatus.OK);
+    }
 }

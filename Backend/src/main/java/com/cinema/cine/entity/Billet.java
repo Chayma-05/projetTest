@@ -17,9 +17,6 @@ public class Billet {
     @Column(name = "id_billet", nullable = false)
     private Integer id;
 
-    @Column(name = "date", nullable = false)
-    private LocalDate date;
-
     @Column(name = "prix", nullable = false)
     private Double prix;
 

@@ -30,6 +30,23 @@ const filmService = {
     const response = await axios.get(`${API_URL}/count`);
     return response.data;
   },
+  uploadImage: async (id, formData) => {
+    try {
+      const response = await axios.post(
+        `/api/film/uploadImage?id=${id}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+      return response.data; 
+    } catch (error) {
+      console.error('Upload Image Error:', error.response.data);
+      return null;
+    }
+  },
 };
 
 export default filmService;

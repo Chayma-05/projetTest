@@ -26,6 +26,11 @@ const projectionService = {
   deleteProjection: async (id) => {
     await axios.delete(`${API_URL}/delete/${id}`);
   },
+
+  getProjectionsByFilmId: async (idFilm) => {
+    const response = await axios.get(`${API_URL}/film/${idFilm}`);
+    return response.data;
+  },
 };
 
 export default projectionService;

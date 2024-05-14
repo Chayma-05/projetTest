@@ -75,17 +75,17 @@
     .label-input-container {
         display: flex;
         align-items: center;
-        margin-bottom: 10px; /* Add some margin between label-input pairs */
+        margin-bottom: 10px; 
       }
       
       .label-input-container label {
-        width: 100px; /* Adjust width as needed */
-        text-align: right; /* Align label text to the right */
-        margin-right: 10px; /* Add some space between label and input */
+        width: 100px; 
+        text-align: right; 
+        margin-right: 10px; 
       }
       
       .label-input-container input {
-        flex: 1; /* Fill remaining space */
+        flex: 1;
       }
 }
   

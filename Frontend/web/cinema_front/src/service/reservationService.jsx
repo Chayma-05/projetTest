@@ -4,6 +4,10 @@ const API_URL = 'http://localhost:8080/api/reservation';
 
 const reservationService = {
  
+  addReservation: async () => {
+    const response = await axios.post(`${API_URL}/add`);
+    return response.data;
+  },
   getAllReservations: async () => {
     const response = await axios.get(`${API_URL}/getAll`);
     return response.data;

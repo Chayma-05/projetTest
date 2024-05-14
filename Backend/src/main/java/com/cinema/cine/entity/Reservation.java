@@ -15,9 +15,6 @@ public class Reservation {
     @Column(name = "id_reservation", nullable = false)
     private Integer id;
 
-    @Column(name = "etat", nullable = false, length = 100)
-    private String etat;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_utilisateur", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

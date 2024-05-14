@@ -37,5 +37,9 @@ public class ProjectionService {
     public void deleteProjection(Integer id) {
         projectionRepository.deleteById(id);
     }
+
+    public List<Projection> getProjectionsByFilmId(Integer idFilm) {
+        return projectionRepository.findByFilmId(idFilm);
+    }
 }
 

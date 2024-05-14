@@ -10,12 +10,12 @@
   background-color: rgb(177, 184, 216);
 }
 
-/* Modifier la couleur du texte en blanc lorsqu'un élément est survolé */
+
 .sidebar ul li a:hover .fs-5 {
   color: white !important;
 }
 .bg-custom-color {
-  background-color: #2e80d8; /* Couleur bleu foncé */
+  background-color: #2e80d8;
 }
 
 .logout-button {
