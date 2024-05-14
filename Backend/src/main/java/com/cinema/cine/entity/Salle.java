@@ -17,4 +17,10 @@ public class Salle {
     @Column(name = "capacite", nullable = false)
     private Integer capacite;
 
+    @Column(name = "balcony", nullable = false)
+    private Integer balcony;
+
+    @Column(name = "normal", nullable = false)
+    private Integer normal;
+
 }

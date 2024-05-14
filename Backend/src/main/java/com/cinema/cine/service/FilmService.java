@@ -4,7 +4,13 @@ import com.cinema.cine.entity.Film;
 import com.cinema.cine.repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Service
@@ -34,6 +40,25 @@ public class FilmService {
         return null; // or throw an exception
     }
 
+    public Film uploadImage(Integer id, MultipartFile file) throws IOException {
+        String baseUrl = "..\\Assets\\";
+        String filename = StringUtils.cleanPath(file.getOriginalFilename());
+
+        Path storageDirectory = Paths.get("C:\\Users\\Khawl\\Desktop\\cinem\\Cinema_Tickets_App\\Frontend\\web\\cinema_front\\src\\Assets");
+        if (!Files.exists(storageDirectory)) {
+            Files.createDirectories(storageDirectory);
+        }
+
+        Path destinationPath = storageDirectory.resolve(Path.of(filename));
+        file.transferTo(destinationPath);
+
+        Film film =filmRepository.findById(id).orElse(null);
+        if (film != null) {
+            film.setPoster(baseUrl + filename);  // Save the URL instead of the path
+            filmRepository.save(film);
+        }
+        return film;
+    }
     public void deleteFilm(Integer id) {
         filmRepository.deleteById(id);
     }
