@@ -10,8 +10,10 @@ import BilletContainer from './containers/BilletContainer';
 import ReservationContainer from './containers/ReservationContainer';
 import UserContainer from './containers/UserContainer';
 import AdminDashboard from './containers/AdminDashboard';
-import Profile from './containers/profile';
-
+import Movies from './containers/Movies';
+import BookingInterface from './containers/BookingInterface';
+import Ticket from './components/ticket';
+import Profile from './containers/profile'
 
 function App() {
   return (
@@ -29,7 +31,11 @@ function App() {
         <Route path="/admin/reservations" element={<ReservationContainer />} />
         <Route path="/admin/films/add" element={<AddFilmContainer />} />
         <Route path="/admin/films/edit/:id" element={<AddFilmContainer/>} />
+        <Route path="/client/Movies" element={<Movies/>} />
+        <Route path="/client/Book" element={<BookingInterface/>} />
+        <Route path="/client/ticket" element={<Ticket/>} />
         <Route path="/profile" element={<Profile />} />
+
         </Routes>
     </Router>
    
